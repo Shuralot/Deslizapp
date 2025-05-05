@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #1b2b3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height: 100vh;
+  }
+  
+  .container {
+    margin-top: 40px;
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 30px 25px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 4px 12px rgba(238, 239, 241, 0.988);
+    text-align: center;
+    border: 2px solid #f5f7f9;
+    position: relative;
+  }
+  
+  h2 {
+    color: #fafafa;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1.5px solid #ffffff;
+    font-size: 1rem;
+    background: transparent;
+    color: #fdfdfd;
+  }
+  
+  input::placeholder {
+    color: #6699cc;
+  }
+  
+  input:focus {
+    border-color: #003366;
+    outline: none;
+    background-color: #f0f8ff;
+  }
+  
+  button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #002f5e;
+  }
+  
+  .resgate {
+    margin-top: 20px;
+    background-color: #1b2b3d;
+    color: #fafbfd;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: fadeIn 1s ease forwards;
+    border: 1px solid #0077cc;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .voltar {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .voltar img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .logo {
+    width: 120px;
+    margin: 25px auto 10px;
+    display: block;
+  }
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clima - DeslizApp</title>
+  <link rel="stylesheet" href="clima.css" />
+</head>
+<body>
+  <header>
+    <button class="back-button" onclick="window.location.href='inicial.html'">←</button>
+    <img src="midia/logo.jpg" alt="Logo DeslizApp" class="logo">
+    <span class="title">DeslizApp - Clima por Bairro</span>
+  </header>
+  
+  <main id="weather">
+    <p></p>
+  </main>
+
+  <script>
+    const weatherDiv = document.getElementById("weather");
+    const apiKey = 'b941751516e9bd396c29ab43040a5c2d';
+  
+    // Lista de bairros e suas coordenadas
+    const bairros = [
+      { nome: 'Maranguape 1', lat: -7.9849, lon: -34.8662 },
+      { nome: 'Maranguape 2', lat: -7.9794, lon: -34.8606 },
+      { nome: 'Tabajara', lat: -7.9446, lon: -34.8527 },
+      { nome: 'Abreu e Lima', lat: -7.8777, lon: -34.8541 },
+      { nome: 'Igarassu', lat: -7.8655, lon: -34.8492 },
+      { nome: 'Pau Amarelo', lat: -7.9865, lon: -34.8776 },
+      { nome: 'Maria Farinha', lat: -7.8339, lon: -34.8313 },
+      { nome: 'Jardim Paulista', lat: -7.9747, lon: -34.8615 },
+    ];
+  
+    // Função para obter o clima de cada bairro
+    bairros.forEach(bairro => {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${bairro.lat}&lon=${bairro.lon}&appid=${apiKey}&units=metric&lang=pt_br`)
+        .then(res => res.json())
+        .then(data => {
+          const temp = data.main.temp.toFixed(1);
+          const desc = data.weather[0].description;
+          const cidade = bairro.nome; // Usar o nome do bairro em vez da cidade
+          const icon = data.weather[0].icon;
+          const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  
+          weatherDiv.innerHTML += `
+            <div class="bairro">
+              <h3>${cidade}</h3>
+              <img src="${iconUrl}" alt="${desc}" />
+              <p>${desc.charAt(0).toUpperCase() + desc.slice(1)}</p>
+              <p>${temp}°C</p>
+            </div>
+          `;
+        })
+        .catch(() => {
+          weatherDiv.innerHTML += '<p>Erro ao carregar clima</p>';
+        });
+    });
+  </script>
+  
+</body>
+</html>
